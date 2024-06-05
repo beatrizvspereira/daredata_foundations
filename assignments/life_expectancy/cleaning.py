@@ -6,7 +6,6 @@ def clean_data(country="PT"):
     """
     Load, clean, and save life expectancy data for Portugal.
     """
-    # Load the data
     df = pd.read_csv(
         '/Users/bia/Desktop/DareData/daredata_foundations/assignments/life_expectancy/data/eu_life_expectancy_raw.tsv', 
         sep='\t'
@@ -15,7 +14,6 @@ def clean_data(country="PT"):
     print(df.head())
     print("\n")
 
-    # Split the first column into multiple columns
     df[['unit', 'sex', 'age', 'geo']] = df.iloc[:, 0].str.split(',', expand=True)
     df = df.drop(df.columns[0], axis=1)
 
@@ -28,7 +26,6 @@ def clean_data(country="PT"):
     print(df.head())
     print(f"DataFrame shape: {df.shape}")
 
-    # Save the DataFrame
     df.to_csv(
         '/Users/bia/Desktop/DareData/daredata_foundations/assignments/life_expectancy/data/pt_life_expectancy.csv', 
         index=False
